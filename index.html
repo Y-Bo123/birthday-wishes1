@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2025新年祝福 - 娜娜专属</title>
+    <style>
+        /* 视频容器 */
+        #video-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            z-index: -1;
+        }
+        #bg-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            min-width: 100%;
+            min-height: 100%;
+            object-fit: cover;
+            filter: brightness(0.9);
+        }
+
+        /* 内容层 */
+        .content {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+            padding: 20px;
+        }
+
+        /* 文字特效 */
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 15px rgba(255, 105, 180, 0.8);
+            animation: glow 2s ease-in-out infinite alternate;
+            background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .message {
+            font-size: 1.8rem;
+            line-height: 1.5;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 1.5rem 2.5rem;
+            border-radius: 15px;
+            backdrop-filter: blur(5px);
+            animation: float 3s ease-in-out infinite;
+        }
+        .signature {
+            margin-top: 3rem;
+            font-size: 1.2rem;
+            opacity: 0.8;
+        }
+
+        /* 动画效果 */
+        @keyframes glow {
+            0% { text-shadow: 0 0 10px rgba(255,105,180,0.5); }
+            100% { text-shadow: 0 0 30px rgba(255,20,147,0.8); }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* 移动端适配 */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            .message { font-size: 1.3rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- 视频背景 -->
+    <div id="video-container">
+        <video id="bg-video" autoplay muted loop playsinline>
+            <source src="firework.mp4" type="video/mp4">
+            <!-- 备用视频格式（可选）
+            <source src="firework.webm" type="video/webm"> -->
+        </video>
+    </div>
+
+    <!-- 祝福内容 -->
+    <div class="content">
+        <h1>🎉 娜娜，新年快乐🎉 </h1>
+        <div class="message">
+            愿此刻的绚烂，永远照亮你的天空。</div>      
+         </p>
+    <p style="margin-top: 40px;">✨ From：Bo]✨</p> 
+    </div>
+<style>
+/* 添加在原有样式之后 */
+h1 {
+    background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shake 0.5s ease infinite;
+}
+
+@keyframes shake {
+    0%,100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+p {
+    font-size: 1.5em !important;  /* 增大字号 */
+    padding: 15px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 10px;
+}
+</style>
+    <!-- 音乐播放器 -->
+    <audio id="bgm" loop>
+        <source src="music.mp3" type="audio/mpeg">
+        <!-- 备用音频格式（可选）
+        <source src="music.ogg" type="audio/ogg"> -->
+    </audio>
+
+    <script>
+        // 自动播放处理
+        let isPlaying = false;
+        
+        function initPlayback() {
+            const video = document.getElementById('bg-video');
+            const audio = document.getElementById('bgm');
+            
+            // 移动端优化
+            if(/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+                video.setAttribute('playsinline', '');
+                video.setAttribute('controls', 'false');
+            }
+
+            // 首次交互后播放音乐
+            document.addEventListener('click', function handleFirstClick() {
+                if(isPlaying) return;
+                
+                audio.play()
+                    .then(() => {
+                        isPlaying = true;
+                        if(/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                            audio.muted = false;
+                        }
+                    })
+                    .catch(error => {
+                        showPlayButton();
+                    });
+                
+                // 移除监听
+                document.removeEventListener('click', handleFirstClick);
+            });
+        }
+
+        // 显示播放按钮
+        function showPlayButton() {
+            const btn = document.createElement('button');
+            btn.innerHTML = '🎵 点击播放音乐';
+            btn.style.cssText = `
+                position: fixed;
+                bottom: 30px;
+                left: 50%;
+                transform: translateX(-50%);
+                padding: 12px 30px;
+                background: rgba(255,255,255,0.25);
+                border: 2px solid #fff;
+                border-radius: 30px;
+                color: #fff;
+                font-size: 1.1rem;
+                backdrop-filter: blur(5px);
+                cursor: pointer;
+                z-index: 1000;
+                transition: 0.3s;
+            `;
+            btn.onmouseover = () => btn.style.background = 'rgba(255,255,255,0.4)';
+            btn.onmouseout = () => btn.style.background = 'rgba(255,255,255,0.25)';
+            btn.onclick = () => {
+                document.getElementById('bgm').play();
+                btn.remove();
+            };
+            document.body.appendChild(btn);
+        }
+
+        // 初始化
+        window.addEventListener('DOMContentLoaded', initPlayback);
+    </script>
+</body>
+</html>
